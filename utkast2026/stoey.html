@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gull Øzger — Støy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f9d8d8;
+      --ink: #0a0a0a;
+      --ink-mid: #1a1a1a;
+      --ink-light: #333333;
+      --rule: #888888;
+      --accent: #8b1a08;
+      --warm: #f0e8e8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 21px;
+      line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .nav-inner {
+      width: 100%;
+      max-width: 1080px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 3rem;
+      background: #ffffff;
+      border-left: 2px solid var(--ink);
+      border-right: 2px solid var(--ink);
+    }
+
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ink-light);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      padding: 5rem 3rem 3rem;
+      gap: 4rem;
+      max-width: 1080px;
+      margin: 0 auto;
+      border-left: 2px solid var(--ink);
+      border-right: 2px solid var(--ink);
+      background: #ffffff;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 0;
+    }
+
+    .hero-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.2s;
+    }
+
+    /* ── STØY ANIMASJON ── */
+    .stoey-title {
+      font-family: 'Libre Baskerville', serif;
+      font-style: normal;
+      font-size: clamp(5rem, 12vw, 9rem);
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      position: relative;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      cursor: default;
+    }
+
+    .stoey-title .letter {
+      display: inline-block;
+      opacity: 0;
+      animation: noiseIn 0.05s ease forwards;
+    }
+
+    .stoey-title .letter:nth-child(1) { animation-delay: 0.4s; }
+    .stoey-title .letter:nth-child(2) { animation-delay: 0.52s; }
+    .stoey-title .letter:nth-child(3) { animation-delay: 0.64s; }
+    .stoey-title .letter:nth-child(4) { animation-delay: 0.76s; }
+    .stoey-title .letter:nth-child(5) { animation-delay: 0.88s; }
+
+    @keyframes noiseIn {
+      0%   { opacity: 0; transform: translateY(8px) skewX(-3deg); filter: blur(6px); }
+      20%  { opacity: 0.3; transform: translateY(-4px) skewX(2deg); filter: blur(3px); }
+      40%  { opacity: 0.7; transform: translateY(3px) skewX(-1deg); filter: blur(1px); }
+      60%  { opacity: 0.5; transform: translateY(-2px) skewX(1deg); filter: blur(2px); }
+      80%  { opacity: 0.9; transform: translateY(1px) skewX(0deg); filter: blur(0.5px); }
+      100% { opacity: 1; transform: translateY(0) skewX(0deg); filter: blur(0); }
+    }
+
+    /* hover: lett støy */
+    .stoey-title:hover .letter {
+      animation: hoverNoise 0.4s ease forwards;
+    }
+
+    .stoey-title:hover .letter:nth-child(1) { animation-delay: 0s; }
+    .stoey-title:hover .letter:nth-child(2) { animation-delay: 0.05s; }
+    .stoey-title:hover .letter:nth-child(3) { animation-delay: 0.1s; }
+    .stoey-title:hover .letter:nth-child(4) { animation-delay: 0.15s; }
+    .stoey-title:hover .letter:nth-child(5) { animation-delay: 0.2s; }
+
+    @keyframes hoverNoise {
+      0%   { transform: translateY(0) skewX(0); }
+      15%  { transform: translateY(-3px) skewX(-2deg); opacity: 0.7; }
+      30%  { transform: translateY(2px) skewX(1.5deg); opacity: 0.9; }
+      50%  { transform: translateY(-1px) skewX(-1deg); opacity: 0.8; }
+      70%  { transform: translateY(1px) skewX(0.5deg); opacity: 0.95; }
+      100% { transform: translateY(0) skewX(0); opacity: 1; }
+    }
+
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: normal;
+      font-weight: 400;
+      color: var(--ink-mid);
+      max-width: 420px;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 1.1s;
+      margin-top: 0;
+    }
+
+    .hero-rule {
+      width: 48px;
+      height: 1.5px;
+      background: var(--ink);
+      margin: 1rem 0;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 1s;
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 1.2s;
+      margin-top: 1.5rem;
+    }
+
+    /* ── PORTRETT ── */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-end;
+      opacity: 0;
+      animation: fadeUp 1.2s ease forwards 0.8s;
+      height: 100%;
+    }
+
+    .portrait-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .portrait-wrap img {
+      width: 100%;
+      display: block;
+      filter: grayscale(15%) contrast(1.05);
+    }
+
+    .portrait-credit {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-top: 0.6rem;
+      text-align: right;
+    }
+
+    /* ── QUOTE BREAK ── */
+    .quote-break {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 8rem 3rem;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+      max-width: 1080px;
+      margin: 0 auto;
+      border-left: 2px solid var(--ink);
+      border-right: 2px solid var(--ink);
+    }
+
+    .quote-break::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(255,255,255,0.015) 3px,
+        rgba(255,255,255,0.015) 4px
+      );
+      pointer-events: none;
+    }
+
+    .quote-break blockquote {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.5;
+      max-width: 680px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .quote-break cite {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: normal;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(244,241,234,0.45);
+      margin-top: 2.5rem;
+    }
+
+    /* ── SECTIONS ── */
+    .section-wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 6rem 3rem;
+      border-left: 2px solid var(--ink);
+      border-right: 2px solid var(--ink);
+      background: #ffffff;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 2rem;
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      margin-bottom: 1.4rem;
+      font-weight: 300;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    .project-statement {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--ink);
+      border-left: 2px solid var(--accent);
+      padding-left: 2rem;
+      margin: 3rem 0;
+    }
+
+    /* ── STILLHET ── */
+    .stillhet {
+      padding: 7rem 3rem;
+      background: var(--warm);
+      text-align: center;
+      max-width: 1080px;
+      margin: 0 auto;
+      border-left: 2px solid var(--ink);
+      border-right: 2px solid var(--ink);
+    }
+
+    .stillhet p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+      font-weight: 400;
+      line-height: 2;
+      color: var(--ink);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .stillhet strong {
+      display: block;
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      font-style: italic;
+      font-weight: 400;
+      margin: 1.2rem 0;
+      line-height: 1.4;
+    }
+
+    /* ── CV TIDSLINJE TO KOLONNER ── */
+    .cv-grid {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 3rem 4rem;
+      border-left: 2px solid var(--ink);
+      border-right: 2px solid var(--ink);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 2rem;
+      border-top: none;
+      background: #ffffff;
+    }
+
+    .cv-col { margin-bottom: 2rem; }
+
+    .cv-col h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+      margin-top: 2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1.5px solid var(--ink);
+    }
+
+    .cv-entry {
+      display: grid;
+      grid-template-columns: 52px 10px 1fr;
+      gap: 0;
+      margin-bottom: 1rem;
+      align-items: stretch;
+      position: relative;
+    }
+
+    .cv-year {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: var(--ink);
+      padding-top: 0.18em;
+      text-align: right;
+      padding-right: 0.7rem;
+    }
+
+    .cv-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--ink);
+      border-radius: 50%;
+      margin-top: 0.38em;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cv-role {
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--ink);
+      padding-left: 0.6rem;
+      border-left: 1.5px solid var(--rule);
+      padding-bottom: 0.6rem;
+    }
+
+    .cv-role em {
+      display: block;
+      font-style: normal;
+      font-size: 0.78rem;
+      color: var(--ink-mid);
+      margin-top: 0.1rem;
+    }
+
+    /* ── NORD ── */
+    .nord-section {
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      background: var(--cream);
+    }
+
+    /* ── KONTAKT ── */
+    .contact-section {
+      text-align: center;
+      padding: 6rem 3rem;
+      max-width: 1080px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-left: 2px solid var(--ink);
+      border-right: 2px solid var(--ink);
+    }
+
+    .contact-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      font-style: normal;
+      margin-bottom: 1rem;
+    }
+
+    .contact-link {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--ink);
+      padding-bottom: 2px;
+      margin: 0.6rem 1.2rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .contact-link:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 2px solid var(--ink);
+      padding: 1.8rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--ink-light);
+      max-width: 1080px;
+      margin: 0 auto;
+      border-left: 2px solid var(--ink);
+      border-right: 2px solid var(--ink);
+      background: #ffffff;
+    }
+
+    footer a {
+      color: var(--ink-light);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--ink); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero, .section-wrap, .cv-grid {
+        border-left: none;
+        border-right: none;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+      .cv-grid { grid-template-columns: 1fr; gap: 0; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 6rem 1.5rem 3rem;
+        gap: 3rem;
+      }
+
+      .hero-right {
+        align-items: flex-start;
+        order: -1;
+      }
+
+      .portrait-wrap { max-width: 260px; }
+
+      .section-wrap { padding: 4rem 1.5rem; }
+      .quote-break { padding: 5rem 1.5rem; }
+      .stillhet { padding: 4rem 1.5rem; }
+
+      .cv-grid { grid-template-columns: 1fr; }
+      .cv-col:first-child { border-right: none; border-bottom: 1px solid var(--rule); }
+      .cv-col { padding: 3rem 1.5rem; }
+
+      .contact-section { padding: 4rem 1.5rem; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#prosjekt" class="skip-link">Hopp til innhold</a>
+
+  <nav>
+    <div class="nav-inner">
+    <a href="https://gullozger-sudo.github.io/gullozger/" class="nav-name">Gull Øzger</a>
+    <ul class="nav-links">
+      <li><a href="#prosjekt">Prosjekt</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#nord">Nord</a></li>
+      <li><a href="#om">Om</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      
+      <h1 class="stoey-title" aria-label="Støy">
+        <span class="letter">S</span><span class="letter">t</span><span class="letter">ø</span><span class="letter">y</span>
+      </h1>
+      <div class="hero-rule"></div>
+      <p class="hero-sub">En scenisk monolog som undersøker hørselstap som kunstnerisk, politisk og kroppslig erfaring.</p>
+      
+    </div>
+
+    <div class="hero-right">
+      <div class="portrait-wrap">
+        <img src="gull_ozger.jpg" alt="Gull Øzger. Foto: Erika Hebbert">
+        <p class="portrait-credit">Gull Øzger · Foto: Erika Hebbert</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUOTE BREAK -->
+  <div class="quote-break">
+    <blockquote>
+      Det er ikke støyen som er problemet.<br>
+      Det er stillheten — innvendig og utvendig<br>
+      på samme tid. Som river.
+    </blockquote>
+    <cite>Fra Støy, 2024–2026</cite>
+  </div>
+
+  <!-- CV -->
+  <main id="main-content">
+  <div id="cv">
+    <div class="section-wrap" style="padding-bottom:1rem; background:#ffffff; margin-bottom:0;">
+      <p class="section-label">Utvalgte verk</p>
+      
+    </div>
+    <div class="cv-grid">
+      <div class="cv-col">
+        <h3>Teater og koreografi</h3>
+
+        <div class="cv-entry">
+          <span class="cv-year">2024–26</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Bleikvasslia / Vekta landet mitt må tåle å bære<em>Joik-konsertforestilling · GullBakken / Davvi</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2021–23</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Close(d) Border Connections<em>Utendørs joik-performance · Mo i Rana, Kirkenes, Hammerfest · <a href="https://vimeo.com/743938303" target="_blank" rel="noopener" style="color:var(--ink); text-decoration:underline;">Se video →</a></em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2020–22</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">The Gathering<em>Nomadisk kunstprosjekt · Barentsregionen / Moskva Youth Biennale</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2013–14</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Pearl of Scandinavia<em>Koreograf · Kompani Camping / Vega Scene · Bergen Internasjonale Festspill</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2015</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Det ordner seg for pappa — Lars Vaular<em>Koreograf og regissør, musikkvideo · <a href="https://www.youtube.com/watch?v=GdCd60xAfwo" target="_blank" rel="noopener" style="color:var(--ink); text-decoration:underline;">Se video →</a></em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2013</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Vi hadde alt eller intet foran oss<em>Koreograf, prosjektleder · BodyTech · Støttet av Kulturrådet · <a href="#" target="_blank" rel="noopener" style="color:var(--ink); text-decoration:underline;">Se video → (kommer)</a></em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2013</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Mormor og de åtte ungene<em>Koreograf · Paradox Film · <a href="https://www.youtube.com/watch?v=uPqHJg_xtRA" target="_blank" rel="noopener" style="color:var(--ink); text-decoration:underline;">Se teaser →</a></em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2011</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Hook n Roll<em>Koreograf · Gjøvik kommunes 150-årsjubileum · Vist Danxica Festival, Mexico</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2015</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Riksscenen — Susanne Lundeng<em>Koreograf og regissør · Premiere mars 2015</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2015</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role"><a href="https://www.youtube.com/watch?v=GdCd60xAfwo" target="_blank" rel="noopener" style="color:var(--ink); text-decoration:underline; text-underline-offset:3px;">«Det ordner seg for pappa» — Lars Vaular</a><em>Koreograf og regissør · Musikkvideo</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2013</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">!Kiss — Munch 150-årsjubileum<em>Koreograf og regissør · Teater Innlandet · Turné Hedmark, Oppland, Oslo</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2005</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Rough Sea — åpning av ny scene<em>Koreograf · Hålogaland Teater, Tromsø</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2005</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Transitt<em>Koreograf og filmsaper · Vist Oulo Dance Festival, Finland</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2000</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Vår herre klinkekule<em>Koreograf · Nordland Teater, Mo i Rana</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">~1999</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">I Have Crossed the Arctic Circle<em>Koreograf · Stellaris Dansteater, Hammerfest</em></span>
+        </div>
+
+        <h3 style="margin-top:2.5rem;">Scenetekst</h3>
+        <div class="cv-entry">
+          <span class="cv-year">2024–</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Støy<em>Scenisk monolog under utvikling · Under utvikling, 2026</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2024–</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">It's After the End of the World – Don't You Know That YET<em>Apokalyptisk scenisk tekst under utvikling</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2024</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Lær å skrive dramatikk<em>Forfatterskolen</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2023</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Skriv kortprosa<em>Forfatterskolen</em></span>
+        </div>
+      </div>
+
+      <div class="cv-col">
+        <h3>Undervisning og fasilitering</h3>
+
+        <div class="cv-entry">
+          <span class="cv-year">2011–19</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Gjestelærer<em>KHiO – Statens Balletthøgskole, Oslo</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2017–23</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Kunstnerisk rådgiver<em>DanseFestival Barents, Hammerfest</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2017–19</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">#metoo-fasilitator<em>Dansens Hus og Black Box Teater, Oslo</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2018</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Bevegelsesarbeid for skuespillere<em>Samovarteatret, Kirkenes</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2016</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Koreograf og bevegelsescoach<em>Operahøgskolen KHiO · Faust og Dialogues des Carmélites</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2016</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Improvisasjon og bevegelse for seniorer<em>Engelsborg Sykehjem, Oslo · Deltakere 76–86 år</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2004–05</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Fast stilling, danselærer<em>Kongsbakken videregående, Tromsø</em></span>
+        </div>
+
+        <h3 style="margin-top:2.5rem;">Lederskap og styreverv</h3>
+
+        <div class="cv-entry">
+          <span class="cv-year">2026</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Jurymedlem<em>Balansekunst utvalgskomité</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2025–26</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Programkomité<em>DanseFestival Barents</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2024–</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Styremedlem<em>Creo Oslo</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2003–07</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Leder<em>FNND – Forum for nordnorske dansekunstnere</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2005–07</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Prosjektleder<em>DanseArena Nord, Hammerfest</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2006</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Kurator, dans for kamera<em>DanseFestival Barents</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2004–06</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Styremedlem<em>Nordnorsk Kulturråd</em></span>
+        </div>
+
+        <h3 style="margin-top:2.5rem;">Utdanning</h3>
+
+        <div class="cv-entry">
+          <span class="cv-year">2026</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Animal-Assisted Intervention<em>NMBU, Norges miljø- og biovitenskapelige universitet</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">2024</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Change Management<em>NMBU</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">1994–97</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">BA i koreografi<em>Statens Balletthøgskole / KHiO, Oslo</em></span>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-year">1992–93</span>
+          <span class="cv-dot" aria-hidden="true"></span>
+          <span class="cv-role">Lærerskole for danselærere<em>Høgskolen i Bodø</em></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROSJEKT -->
+  <div class="section-wrap" id="prosjekt">
+    <p class="section-label">Prosjektet</p>
+    <h2>Støy</h2>
+
+    <div class="project-statement">
+      En scenisk monolog som undersøker hørselstap som kunstnerisk, politisk og kroppslig erfaring – og som stiller spørsmål ved hva universell tilgang til scenekunst faktisk betyr når det skrives inn i verket fra første linje, ikke legges på etterpå.
+    </div>
+
+    <p>Jeg er hørselshemmet, og jeg skriver fra den erfaringen – ikke fordi jeg vil fortelle min egen historie, men fordi spesifikk tematikk er det eneste som kan åpne seg mot noe større. Det å ikke bli hørt. Det å tilpasse seg rom som ikke er laget for deg. Det å bære hele byrden – for deg selv, og for alle andre som er som deg.</p>
+
+    <p>Det finnes mange måter å være hørselshemmet på. Det er ikke én erfaring, men et spekter. Som en del av utviklingen av <em>Støy</em> vil jeg snakke med andre hørselshemmede og døve – ikke som tradisjonell research, men som en forlengelse av den lyttepraksis jeg har utviklet gjennom kunstnerskapet mitt.</p>
+
+    <p>Karakteren har ikke navn eller kjønn. Stedet er ikke konkret. Tiden hopper. Det som holder teksten sammen er ikke en lineær handling, men en rytmisk og kompositorisk struktur – fra adagio, sakte og innadvendt, til scherzo, der alt bryter løs, og tilbake igjen.</p>
+
+    <p>Musikk er ikke lenger fullt tilgjengelig for meg på samme måte som før. <em>Støy</em> er min måte å skape musikk på.</p>
+  </div>
+
+  <!-- STILLHET -->
+  <div class="stillhet">
+    <p>
+      Støy. Ikke ingenting. Aldri ingenting.<br>
+      <strong>En kropp. Et rom.<br>Det som sies og det som ikke når frem.</strong>
+      Høreapparat er blitt like vanlig som briller.<br>
+      Likevel er scenen fortsatt bygget<br>
+      for den kroppen som hører på én bestemt måte.
+    </p>
+  </div>
+
+  <!-- TILGJENGELIGHET -->
+  <div class="section-wrap">
+    <p class="section-label">Form og tilgjengelighet</p>
+    <h2>Skrevet for alle kropper</h2>
+
+    <p>Forestillingen begynner før den begynner. Før karakteren trer inn legges partituret frem – fysisk, på gulvet foran publikum. Det er ikke et program. Det er en del av verket. Publikum får vite: lydnivået vil variere, lyset vil aldri slukkes helt, du kan gå ut og komme tilbake.</p>
+
+    <p>Tegnspråktolken og skrivetolken er ikke et tillegg til forestillingen – de er en integrert del av den. Lydbildet er influert av hvordan lyd faktisk høres ut gjennom et høreapparat: der mekaniske lyder trumfer menneskestemmer, der bilen overdøver samtalen.</p>
+
+    <p>En tekst skrevet for alle kropper er en annen tekst enn en skrevet for normkroppen. Det er det <em>Støy</em> vil være.</p>
+  </div>
+
+  <!-- NORD -->
+  <div class="section-wrap nord-section" id="nord">
+    <p class="section-label">Tilknytning til nord</p>
+    <h2>Stedet jeg skriver ut fra</h2>
+
+    <p>Jeg er født og oppvokst i Mo i Rana, Nordland, hvor GullBakken også har sin adresse. Gjennom hele karrieren har jeg arbeidet i nord – med produksjoner ved Hålogaland Teater, Nordland Teater og i Hammerfest, i samarbeid med blant andre Samovarteatret og Hahugen produksjoner, og gjennom mange år tilknyttet DanseFestival Barents.</p>
+
+    <p>Egne produksjoner har også hatt nord som scene – senest <em>Close(d) Border Connections</em>, som ble vist i Mo i Rana, Kirkenes og Hammerfest. Gjennom mange år i Barentsregionen – med norske, russiske, svenske og finske kunstnere – har grensesonen blitt en del av praksisen min. Ikke som geografi, men som en levd erfaring av hva det vil si å arbeide på tvers av språk og politiske kontekster som ikke alltid er forenlige.</p>
+
+    <p>Nord har alltid opptatt meg – ikke som tema, men som et sted jeg er nysgjerrig på, uenig med, glad i og formet av. Det kjenner jeg på kroppen. Det er det jeg skriver ut fra.</p>
+  </div>
+
+  <!-- OM -->
+  <div class="section-wrap" id="om">
+    <p class="section-label">Om kunstnerskapet</p>
+    <h2>Gull Øzger</h2>
+
+    <p>Koreograf, regissør og dansekunstner med over 25 års scenisk praksis. Kunstnerlig leder og medeier av GullBakken. Jeg kommer fra Mo i Rana. Istanbul er en del av mitt DNA – men også et sted på avstand. Jeg snakker ikke tyrkisk, og jeg var seksten år første gang jeg satte foten der.</p>
+
+    <p>Det sier kanskje noe om hva som har opptatt meg hele livet: hva som egentlig kommuniseres mellom mennesker, hva som går tapt på veien, og hva kroppen forstår når ordene ikke strekker til. Og hva som skjer når heller ikke kroppen strekker til – når begge svikter på en gang.</p>
+
+    <p>Scenen er ikke et sted der noe ferdig leveres. Det er et sted der en samtale begynner. Hvis invitasjonen er god nok, skjer noe uforutsigbart – publikum lener seg frem, bringer sin egen kropp og erfaring inn i rommet, og fullfører det teksten ikke sier. Det er det jeg er opptatt av.</p>
+  </div>
+
+  <!-- KONTAKT -->
+  <div class="contact-section" id="kontakt">
+    <p class="section-label" style="justify-content:center; margin-bottom:1.5rem;">Kontakt</p>
+    <h2>Dramatikkprosjekt</h2>
+    <p style="color:var(--ink-light); font-size:0.95rem; margin-bottom:2rem; font-weight:300;"></p>
+    <a href="https://gullozger-sudo.github.io/gullozger/" class="contact-link">← tilbake til gullozger</a>
+  </div>
+
+  <footer>
+    <span>© Gull Øzger 2026</span>
+  </footer>
+
+</body>
+</html>
