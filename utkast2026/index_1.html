@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gull Øzger — Utkast 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f5f2ec;
+      --ink: #1a1814;
+      --ink-light: #4a4640;
+      --rule: #c8c0b0;
+      --accent: #8b3a2a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 3rem;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ink-light);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 8rem 3rem 5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.4s;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .hero-sub {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--ink-light);
+      max-width: 520px;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 0.6s;
+    }
+
+    .hero-rule {
+      width: 60px;
+      height: 2px;
+      background: var(--ink);
+      margin: 2.5rem 0;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 0.8s;
+    }
+
+    .hero-meta {
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 1s;
+    }
+
+    /* QUOTE BREAK */
+    .quote-break {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 7rem 3rem;
+      text-align: center;
+    }
+
+    .quote-break blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.4;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .quote-break cite {
+      display: block;
+      font-family: 'EB Garamond', serif;
+      font-style: normal;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--rule);
+      margin-top: 2rem;
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 6rem 3rem;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      margin-bottom: 1.4rem;
+      color: var(--ink);
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    /* PROSJEKT */
+    .project-statement {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--ink);
+      border-left: 3px solid var(--accent);
+      padding-left: 2rem;
+      margin: 3rem 0;
+    }
+
+    /* STILLHET */
+    .stillhet {
+      padding: 6rem 3rem;
+      background: #eee9e0;
+      text-align: center;
+    }
+
+    .stillhet p {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      line-height: 1.9;
+      color: var(--ink);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .stillhet p strong {
+      display: block;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-style: italic;
+      font-weight: 400;
+      margin: 1rem 0;
+    }
+
+    /* NORD */
+    .nord-section {
+      background: var(--cream);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* CONTACT */
+    .contact-section {
+      text-align: center;
+      padding: 6rem 3rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-link {
+      display: inline-block;
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--ink);
+      padding-bottom: 2px;
+      margin: 0.5rem 1rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .contact-link:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-light);
+    }
+
+    footer a {
+      color: var(--ink-light);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--ink); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.5rem; }
+      .hero { padding: 6rem 1.5rem 4rem; }
+      section { padding: 4rem 1.5rem; }
+      .quote-break { padding: 5rem 1.5rem; }
+      .stillhet { padding: 4rem 1.5rem; }
+      .contact-section { padding: 4rem 1.5rem; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="https://gullozger-sudo.github.io/gullozger/" class="nav-name">Gull Øzger</a>
+    <ul class="nav-links">
+      <li><a href="#prosjekt">Prosjekt</a></li>
+      <li><a href="#nord">Nord</a></li>
+      <li><a href="#om">Om</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-label">Utkast 2026 — Davvi / Dramatikkutviklingsprogrammet</p>
+    <h1 class="hero-title"><em>Støy</em></h1>
+    <div class="hero-rule"></div>
+    <p class="hero-sub">En scenisk monolog som undersøker hørselstap som kunstnerlig, politisk og kroppslig erfaring.</p>
+    <p class="hero-meta" style="margin-top:1.5rem;">Gull Øzger &nbsp;·&nbsp; GullBakken &nbsp;·&nbsp; Mo i Rana</p>
+  </div>
+
+  <!-- QUOTE BREAK -->
+  <div class="quote-break">
+    <blockquote>
+      Det er ikke støyen som er problemet.<br>
+      Det er stillheten — innvendig og utvendig<br>
+      på samme tid. Som river.
+    </blockquote>
+    <cite>Fra Støy, 2024–2026</cite>
+  </div>
+
+  <!-- PROSJEKT -->
+  <section id="prosjekt">
+    <p class="section-label">Prosjektet</p>
+    <h2>Støy</h2>
+
+    <div class="project-statement">
+      En scenisk monolog som undersøker hørselstap som kunstnerlig, politisk og kroppslig erfaring – og som stiller spørsmål ved hva universell tilgang til scenekunst faktisk betyr når det skrives inn i verket fra første linje, ikke legges på etterpå.
+    </div>
+
+    <p>Jeg er hørselshemmet, og jeg skriver fra den erfaringen – ikke fordi jeg vil fortelle min egen historie, men fordi spesifikk tematikk er det eneste som kan åpne seg mot noe større. Det å ikke bli hørt. Det å tilpasse seg rom som ikke er laget for deg. Det å bære hele byrden – for deg selv, og for alle andre som er som deg.</p>
+
+    <p>Det finnes mange måter å være hørselshemmet på. Det er ikke én erfaring, men et spekter. Som en del av utviklingen av <em>Støy</em> vil jeg snakke med andre hørselshemmede og døve – ikke som tradisjonell research, men som en forlengelse av den lyttepraksis jeg har utviklet gjennom kunstnerskapet mitt.</p>
+
+    <p>Karakteren har ikke navn eller kjønn. Stedet er ikke konkret. Tiden hopper. Det som holder teksten sammen er ikke en lineær handling, men en rytmisk og kompositorisk struktur – fra adagio, sakte og innadvendt, til scherzo, der alt bryter løs, og tilbake igjen.</p>
+
+    <p>Musikk er ikke lenger fullt tilgjengelig for meg på samme måte som før. <em>Støy</em> er min måte å skape musikk på.</p>
+  </section>
+
+  <!-- STILLHET -->
+  <div class="stillhet">
+    <p>
+      Støy. Ikke ingenting. Aldri ingenting.<br>
+      <strong>En kropp. Et rom.<br>Det som sies og det som ikke når frem.</strong>
+      Høreapparat er blitt like vanlig som briller.<br>
+      Likevel er scenen fortsatt bygget<br>
+      for den kroppen som hører på én bestemt måte.
+    </p>
+  </div>
+
+  <!-- OM TILGJENGELIGHET -->
+  <section>
+    <p class="section-label">Form og tilgjengelighet</p>
+    <h2>Skrevet for alle kropper</h2>
+
+    <p>Forestillingen begynner før den begynner. Før karakteren trer inn legges partituret frem – fysisk, på gulvet foran publikum. Det er ikke et program. Det er en del av verket. Publikum får vite: lydnivået vil variere, lyset vil aldri slukkes helt, du kan gå ut og komme tilbake.</p>
+
+    <p>Tegnspråktolken og skrivetolken er ikke et tillegg til forestillingen – de er en integrert del av den. Lydbildet er influert av hvordan lyd faktisk høres ut gjennom et høreapparat: der mekaniske lyder trumfer menneskestemmer, der bilen overdøver samtalen.</p>
+
+    <p>En tekst skrevet for alle kropper er en annen tekst enn en skrevet for normkroppen. Det er det <em>Støy</em> vil være.</p>
+  </section>
+
+  <!-- NORD -->
+  <section id="nord" class="nord-section">
+    <p class="section-label">Tilknytning til nord</p>
+    <h2>Stedet jeg skriver ut fra</h2>
+
+    <p>Jeg er født og oppvokst i Mo i Rana, Nordland, hvor GullBakken også har sin adresse. Gjennom hele karrieren har jeg arbeidet i nord – med produksjoner ved Hålogaland Teater, Nordland Teater og i Hammerfest, i samarbeid med blant andre Samovarteatret og Hahugen produksjoner, og gjennom mange år tilknyttet DanseFestival Barents.</p>
+
+    <p>Egne produksjoner har også hatt nord som scene – senest <em>Close(d) Border Connections</em>, som ble vist i Mo i Rana, Kirkenes og Hammerfest. Gjennom mange år i Barentsregionen – med norske, russiske, svenske og finske kunstnere – har grensesonen blitt en del av praksisen min. Ikke som geografi, men som en levd erfaring av hva det vil si å arbeide på tvers av språk og politiske kontekster som ikke alltid er forenlige.</p>
+
+    <p>Nord har alltid opptatt meg – ikke som tema, men som et sted jeg er nysgjerrig på, uenig med, glad i og formet av. Det kjenner jeg på kroppen. Det er det jeg skriver ut fra.</p>
+  </section>
+
+  <!-- OM -->
+  <section id="om">
+    <p class="section-label">Om kunstnerskapet</p>
+    <h2>Gull Øzger</h2>
+
+    <p>Koreograf, regissør og dansekunstner med over 25 års scenisk praksis. Kunstnerlig leder og medeier av GullBakken. Jeg kommer fra Mo i Rana. Istanbul er en del av mitt DNA – men også et sted på avstand. Jeg snakker ikke tyrkisk, og jeg var seksten år første gang jeg satte foten der.</p>
+
+    <p>Det sier kanskje noe om hva som har opptatt meg hele livet: hva som egentlig kommuniseres mellom mennesker, hva som går tapt på veien, og hva kroppen forstår når ordene ikke strekker til. Og hva som skjer når heller ikke kroppen strekker til – når begge svikter på en gang.</p>
+
+    <p>Scenen er ikke et sted der noe ferdig leveres. Det er et sted der en samtale begynner. Hvis invitasjonen er god nok, skjer noe uforutsigbart – publikum lener seg frem, bringer sin egen kropp og erfaring inn i rommet, og fullfører det teksten ikke sier.</p>
+
+    <p style="font-size:0.85rem; letter-spacing:0.06em; color: var(--ink-light); margin-top:2rem;">
+      Koreograf for Hålogaland Teater · Kompani Camping / Vega Scene · Norsk Filmfond<br>
+      Undervist ved KHiO · Kunstnerisk rådgiver, DanseFestival Barents 2017–2023<br>
+      Styremedlem Creo Oslo · Leder FNND 2003–2007
+    </p>
+  </section>
+
+  <!-- KONTAKT -->
+  <div class="contact-section" id="kontakt">
+    <p class="section-label" style="justify-content:center;">Kontakt</p>
+    <h2>Ta gjerne kontakt</h2>
+    <p style="color:var(--ink-light); font-size:0.95rem; margin-bottom:2rem;">Søknad til Utkast – Davvi Dramatikkutviklingsprogram 2026–2027</p>
+    <a href="mailto:gullozger@gmail.com" class="contact-link">gullozger@gmail.com</a>
+    <a href="https://gullozger-sudo.github.io/gullozger/" class="contact-link">gullozger.no</a>
+  </div>
+
+  <footer>
+    <span>© Gull Øzger / GullBakken 2026</span>
+    <span><a href="https://gullozger-sudo.github.io/gullozger/">← Tilbake til gullozger.no</a></span>
+  </footer>
+
+</body>
+</html>
