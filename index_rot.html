@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gull Øzger — Choreographer, Director, Dance Artist</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --fjord: #1e4a55;
+    --rust: #8f3520;
+    --ash: #9A9590;
+    --night: #0E0E12;
+    --cream: #F7F4EF;
+    --lichen: #5a8f5a;
+    --rule: #D4CCC2;
+    --bg: #FAFAF8;
+    --bg2: #F2EDE6;
+    --text: #1a1a1a;
+    --text2: #6b6560;
+    --border: #e0d8d0;
+    --card-bg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f0f0d;
+      --bg2: #1a1915;
+      --text: #e8e4de;
+      --text2: #9a9590;
+      --border: #2e2c28;
+      --card-bg: #1a1915;
+      --cream: #1a1915;
+      --rule: #3a3830;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 17px;
+    line-height: 1.65;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+  }
+  .site-header .logo {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--text2);
+    letter-spacing: 0.02em;
+  }
+  .site-header nav { display: flex; gap: 1.5rem; }
+  .site-header nav a {
+    font-size: 0.78rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border: 2px solid var(--text);
+    padding: 4px 12px;
+    border-radius: 4px;
+    transition: all 0.15s;
+  }
+  .site-header nav a:hover { background: var(--text); color: var(--bg); }
+  .site-header nav a:focus { outline: 3px solid var(--fjord); outline-offset: 2px; }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 4rem 2rem 2.5rem;
+  }
+  .hero-top-rule {
+    height: 6px;
+    background: var(--text);
+    border-radius: 2px;
+    margin-bottom: 2rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 700;
+    font-family: 'Libre Baskerville', Georgia, serif;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+  .hero .roles {
+    font-size: 1rem;
+    font-style: italic;
+    font-family: 'Libre Baskerville', Georgia, serif;
+    color: var(--fjord);
+    margin-bottom: 1.2rem;
+    border-bottom: 2px solid var(--fjord);
+    padding-bottom: 0.6rem;
+    display: inline-block;
+  }
+  .hero .contact-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text2);
+    margin-bottom: 1.5rem;
+  }
+  .hero .contact-bar a { color: var(--text2); text-decoration: none; }
+  .hero .contact-bar a:hover { color: var(--fjord); }
+  .hero-bot-rule {
+    height: 3px;
+    background: var(--text);
+    border-radius: 2px;
+    margin: 1.5rem 0;
+    opacity: 0.3;
+  }
+  .pull-quote {
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    font-style: italic;
+    font-weight: 400;
+    font-family: 'Libre Baskerville', Georgia, serif;
+    color: var(--text);
+    background: var(--bg2);
+    padding: 0.8rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    border-left: 4px solid var(--rust);
+    padding: 0.5rem 1.2rem;
+    margin: 1.5rem 0 1rem;
+    line-height: 1.35;
+  }
+  .statement {
+    font-size: 0.97rem;
+    color: var(--text2);
+    line-height: 1.8;
+    max-width: 680px;
+    font-weight: 300;
+  }
+  .statement strong { color: var(--text); font-weight: 500; }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem;
+  }
+
+  /* ── FILTERS ── */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 2.5rem 0 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .filters .filter-label {
+    font-size: 0.8rem;
+    color: var(--ash);
+    font-style: italic;
+    margin-right: 0.3rem;
+  }
+  .filter-btn {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    padding: 6px 16px;
+    border-radius: 4px;
+    border: 2px solid var(--text);
+    background: transparent;
+    cursor: pointer;
+    color: var(--text);
+    transition: all 0.15s;
+    letter-spacing: 0.02em;
+    font-weight: 600;
+  }
+  .filter-btn:hover { background: var(--text); color: var(--bg); }
+  .filter-btn:focus { outline: 3px solid var(--fjord); outline-offset: 2px; }
+  .filter-btn.active { background: var(--text); color: var(--bg); }
+  .filter-btn.active.soft { background: var(--text); color: var(--bg); }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 88px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: var(--text);
+    opacity: 0.15;
+  }
+
+  .decade { margin-bottom: 2.5rem; }
+  .decade-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ash);
+    margin-bottom: 1rem;
+    font-style: normal;
+    padding-left: 0;
+    font-weight: 600;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .entry {
+    display: flex;
+    gap: 1.2rem;
+    margin-bottom: 0.9rem;
+    transition: opacity 0.25s;
+  }
+  .entry.hidden { display: none; }
+
+  .year-col {
+    width: 76px;
+    flex-shrink: 0;
+    text-align: right;
+    padding-top: 0.5rem;
+  }
+  .year {
+    font-size: 0.8rem;
+    color: var(--ash);
+    font-style: italic;
+    line-height: 1.3;
+  }
+  .dot-col {
+    width: 24px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.65rem;
+  }
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2.5px solid var(--text);
+    background: var(--bg);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    transition: all 0.18s;
+  }
+  .dot.soft { border-color: var(--text); background: var(--text); }
+  .dot.edu { border-color: var(--text); background: var(--bg); }
+  .dot.role { border-color: var(--text); background: var(--bg); opacity: 0.5; }
+
+  .card {
+    flex: 1;
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 0.75rem 1rem 0.8rem;
+    cursor: default;
+    transition: border-color 0.18s, background 0.18s;
+    position: relative;
+  }
+  .card.has-note { cursor: pointer; }
+  .card.has-note:hover { border-color: var(--text); border-width: 2px; }
+  .card.has-note:focus { outline: 3px solid var(--fjord); outline-offset: 2px; }
+  .card.soft.has-note:hover { border-color: var(--text); }
+  .card.open { border-color: var(--text); border-width: 2px; border-left-width: 5px; }
+  .card.open {
+    background: var(--bg2);
+    border-color: var(--border);
+  }
+
+  .toggle-hint {
+    font-size: 0.7rem;
+    color: var(--rule);
+    float: right;
+    margin-top: 0.15rem;
+    font-style: normal;
+    transition: color 0.18s;
+  }
+  .card:hover .toggle-hint { color: var(--ash); }
+  details.card { list-style: none; }
+  details.card summary { list-style: none; cursor: pointer; }
+  details.card summary::-webkit-details-marker { display: none; }
+  details.card[open] { background: var(--bg2); }
+  details.card[open] .note { display: block; border-top: 0.5px solid var(--border); padding-top: 0.5rem; margin-top: 0.5rem; }
+  details.card summary .card-summary { display: block; }
+  .toggle-hint-css { font-size: 0.7rem; color: var(--rule); float: right; margin-top: 0.15rem; font-style: normal; }
+  details.card[open] .toggle-hint-css { display: none; }
+  .card-summary { display: block; }
+
+  .card-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem;
+    margin-bottom: 0.3rem;
+    clear: right;
+  }
+  .title {
+    font-size: 0.95rem;
+    font-weight: 400;
+    font-family: 'Libre Baskerville', Georgia, serif;
+    color: var(--text);
+    font-style: italic;
+    line-height: 1.3;
+  }
+  .venue {
+    font-size: 0.86rem;
+    color: var(--text2);
+    font-style: normal;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-top: 0.3rem;
+  }
+  .tag {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    padding: 2px 9px;
+    border-radius: 12px;
+    font-style: normal;
+    letter-spacing: 0.01em;
+  }
+  .tag.fjord { background: transparent; color: var(--text); border: 1.5px solid var(--text); }
+  .tag.rust  { background: var(--text); color: var(--bg); border: 2px solid var(--text); font-weight: 700; letter-spacing: 0.03em; }
+  .tag.lichen{ background: transparent; color: var(--text); border: 1.5px solid var(--text); font-style: italic; }
+  .tag.ash   { background: transparent; color: var(--text); border: 1.5px solid var(--border); opacity: 0.7; }
+  @media (prefers-color-scheme: dark) {
+    .tag.fjord { background: transparent; color: var(--text); border-color: var(--text); }
+    .tag.rust  { background: var(--text); color: var(--bg); border-color: var(--text); }
+    .tag.lichen{ background: transparent; color: var(--text); border-color: var(--text); }
+  }
+
+  .note {
+    font-size: 0.88rem;
+    color: var(--text2);
+    line-height: 1.65;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 0.5px solid var(--border);
+    display: block;
+    font-style: italic;
+  }
+  .toggle-hint { display: none; }
+  .js-enabled .note { display: none; }
+  .js-enabled .toggle-hint { display: block; }
+  .js-enabled .card.open .note { display: block; }
+  .js-enabled .card.open { background: var(--bg2); }
+  .support {
+    font-size: 0.78rem;
+    color: var(--ash);
+    margin-top: 0.35rem;
+    font-style: normal;
+    line-height: 1.45;
+  }
+
+  /* ── NARRATIVE SECTION ── */
+  .narrative-section {
+    margin: 3rem 0;
+    padding: 2rem 0;
+    border-top: 2px solid var(--text);
+    border-bottom: 2px solid var(--text);
+    opacity: 1;
+  }
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ash);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+  .narrative-text {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: var(--text2);
+    max-width: 660px;
+    font-family: 'Libre Baskerville', Georgia, serif;
+  }
+  .narrative-text p { margin-bottom: 1.2rem; }
+  .narrative-text p:last-child { margin-bottom: 0; }
+  .narrative-text strong { color: var(--text); font-weight: 500; }
+  .narrative-text em { color: var(--text); }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem 3rem;
+  }
+  .footer-rule-top { height: 4px; background: var(--text); border-radius: 2px; margin-bottom: 1rem; }
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 3rem;
+    font-size: 0.85rem;
+    color: var(--text2);
+  }
+  .footer-inner a { color: var(--text2); text-decoration: none; }
+  .footer-inner a:hover { color: var(--fjord); }
+  .footer-note {
+    margin-top: 0.8rem;
+    font-size: 0.78rem;
+    color: var(--ash);
+    font-style: italic;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .hero { padding: 2.5rem 1.2rem 1.5rem; }
+    .main { padding: 0 1.2rem 3rem; }
+    .site-footer { padding: 0 1.2rem 2rem; }
+    .timeline::before { left: 68px; }
+    .year-col { width: 56px; }
+    .site-header nav { display: none; }
+  }
+
+  
+  /* ── ACCESSIBILITY SECTION ── */
+  .access-section {
+    background: #ffffff;
+    border-top: 4px solid var(--text);
+    border-bottom: 4px solid var(--text);
+  }
+  .access-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .access-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--text);
+    border: 2px solid var(--text);
+    border-radius: 4px;
+    padding: 0.5rem 1.2rem;
+    margin: 0.7rem 0;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--bg);
+    cursor: pointer;
+    transition: all 0.15s;
+    width: auto;
+  }
+  .access-toggle:hover { background: var(--fjord); border-color: var(--fjord); }
+  .access-toggle:focus { outline: 3px solid var(--fjord); outline-offset: 2px; }
+  .access-content {
+    padding: 2rem 0 2.5rem;
+    border-top: 2px solid #111111;
+  }
+  .access-lang-row {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+  .lang-btn {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    padding: 8px 22px;
+    border-radius: 4px;
+    border: 2.5px solid #111111;
+    background: transparent;
+    cursor: pointer;
+    color: #111111;
+    font-weight: 700;
+    transition: all 0.15s;
+    min-width: 90px;
+  }
+  .lang-btn:hover { background: #111111; color: #ffffff; }
+  .lang-btn:focus { outline: 3px solid var(--fjord); outline-offset: 3px; }
+  .lang-btn.active { background: #111111; border-color: #111111; color: #ffffff; }
+  .access-heading {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid #111111;
+  }
+  .lang-block p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 1rem;
+    max-width: 640px;
+  }
+  .lang-block strong { font-weight: 600; }
+  .access-list {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin: 0 0 1rem 1.4rem;
+    max-width: 640px;
+  }
+  .access-list li { margin-bottom: 0.5rem; }
+  .access-close {
+    margin-top: 1.5rem;
+    background: none;
+    border: 2.5px solid #111111;
+    border-radius: 4px;
+    padding: 10px 24px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    color: #111111;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.15s;
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+  }
+  .access-close:hover { background: #111111; color: #ffffff; }
+  .access-close:focus { outline: 3px solid var(--fjord); outline-offset: 3px; }
+
+
+
+  .cv-note {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    color: var(--ash);
+    font-style: italic;
+    margin: 1.5rem 0 0;
+    padding: 0.6rem 1rem;
+    border-left: 4px solid var(--text); opacity: 0.5;
+  }
+
+
+  /* ── SKIP LINK (screen readers + keyboard) ── */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    background: var(--text);
+    color: var(--bg);
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    z-index: 999;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 1rem; }
+
+  /* ── FONT SIZE CONTROLS ── */
+  .font-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-left: auto;
+  }
+  .font-controls span {
+    font-size: 0.75rem;
+    color: var(--text2);
+    font-family: 'Source Sans 3', sans-serif;
+    margin-right: 0.2rem;
+  }
+  .font-btn {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    border: 2px solid var(--text);
+    background: transparent;
+    color: var(--text);
+    border-radius: 4px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 3px 8px;
+    transition: all 0.15s;
+  }
+  .font-btn:hover { background: var(--text); color: var(--bg); }
+  .font-btn:focus { outline: 3px solid var(--fjord); outline-offset: 2px; }
+  .font-btn.a-small  { font-size: 0.8rem; }
+  .font-btn.a-medium { font-size: 1rem; }
+  .font-btn.a-large  { font-size: 1.15rem; }
+
+  /* ── LARGER BASE TEXT ── */
+  body { font-size: 18px; }
+  .card { padding: 0.85rem 1.1rem 0.9rem; }
+  .title { font-size: 1rem; }
+  .venue { font-size: 0.9rem; }
+  .year  { font-size: 0.85rem; }
+  .note  { font-size: 0.92rem; line-height: 1.75; }
+  .toggle-hint { font-size: 0.78rem; }
+  .tag  { font-size: 0.78rem; padding: 3px 10px; }
+  .statement { font-size: 1rem; line-height: 1.85; }
+  .decade-label { font-size: 0.72rem; }
+  .lang-block p { font-size: 1.1rem; line-height: 1.85; }
+
+  /* ── FOCUS VISIBLE everywhere ── */
+  *:focus-visible {
+    outline: 3px solid var(--fjord);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* ── REDUCED MOTION ── */
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+</style>
+</head>
+<body>
+
+  
+  <!-- ACCESSIBILITY SECTION -->
+  <section class="access-section" aria-label="Enkel tekstversjon / Plain text version">
+    <div class="access-inner">
+      <button class="access-toggle" id="access-btn" onclick="toggleAccess()" aria-expanded="false" aria-controls="access-content">
+        <span id="access-btn-text">☰&nbsp;&nbsp;Les en enkel tekst om meg &nbsp;/&nbsp; Read a simple text about me</span>
+      </button>
+      <div id="access-content" class="access-content" style="display:none;">
+
+        <div class="access-lang-row">
+          <button class="lang-btn active" onclick="showLang('no', this)">Norsk</button>
+          <button class="lang-btn" onclick="showLang('en', this)">English</button>
+        </div>
+
+        <!-- NORSK -->
+        <div id="lang-no" class="lang-block">
+          <h2 class="access-heading">Om Gull Øzger</h2>
+          <p>Jeg heter Gull Øzger. Jeg er koreograf, regissør og dansekunstner. Jeg er fra Mo i Rana i Nordland og bor i Oslo.</p>
+          <p>Jeg lager forestillinger og prosjekter — ofte utendørs, på grenser og i samarbeid med kunstnere fra mange land.</p>
+          <p>Siden 2018 jobber jeg med noe jeg kaller <strong>soft aktivisme</strong>. Det handler om å bruke kroppens mykhet og sårbarhet som politisk uttrykk — i stedet for konfrontasjon og støy.</p>
+          <p>Jeg driver <strong>GullBakken</strong> sammen med tre andre kunstnere. I arbeidet mitt er jeg opptatt av å inkludere alle — uansett alder, religion, kjønn, etnisitet, funksjonsvariasjon eller bakgrunn. Mangfold er ikke et tillegg, men en del av selve praksisen.</p>
+          <p>Jeg har nedsatt hørsel og bruker høreapparat.</p>
+        </div>
+
+        <!-- ENGLISH -->
+        <div id="lang-en" class="lang-block" style="display:none;">
+          <h2 class="access-heading">About Gull Øzger</h2>
+          <p>My name is Gull Øzger. I am a choreographer, director, and dance artist from Mo i Rana in Northern Norway. I live in Oslo.</p>
+          <p>I make performances and projects — often outdoors, at borders, and in collaboration with artists from many countries.</p>
+          <p>Since 2018, I have worked with a concept I call <strong>soft activism</strong>. This means using the body's softness and vulnerability as a form of political expression — instead of confrontation and noise.</p>
+          <p>I run <strong>GullBakken</strong> together with three other artists. In my work, I am committed to including everyone — regardless of age, religion, gender, ethnicity, disability, or background. Diversity is not an add-on, but part of the practice itself.</p>
+          <p>I have a hearing impairment and use a hearing aid.</p>
+        </div>
+
+        <button class="access-close" onclick="toggleAccess()">↑ Lukk / Close</button>
+      </div>
+    </div>
+  </section>
+
+<header class="site-header">
+<span class="logo">Gull Øzger</span>
+<nav>
+<a href="#timeline">Works</a>
+<a href="#practice">Practice</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+<section class="hero">
+<div class="hero-top-rule"></div>
+<h1>Gull Øzger</h1>
+<div class="roles">Choreographer · Director · Dance Artist · Artistic Director, GullBakken</div>
+<div class="contact-bar">
+<span>Oslo, Norway</span>
+<a href="/cdn-cgi/l/email-protection#4c2b3920200c2b3920202e2d27272922622223"><span class="__cf_email__" data-cfemail="2245574e4e6245574e4e40434949474c0c4c4d">[email protected]</span></a>
+<span>Norwegian · English · Dutch</span>
+</div>
+<div class="hero-bot-rule"></div>
+<div class="pull-quote">"The soft body is the most radical statement."</div>
+<p class="statement">
+    A practice rooted in the body as a site of political and cultural knowledge — shaped by the landscapes, languages, and border-crossings of Northern Norway and the Barents region. Since 2018: <strong>soft activism</strong> — placing the body's vulnerability and softness at the centre of political expression, rather than confrontation. Through <strong>GullBakken</strong>, work that is nomadic, site-responsive, and cross-border — rooted in <strong>non-normative perspectives</strong>, questioning whose bodies, whose languages, and whose ways of organising are considered the norm in art and in public space.
+  </p>
+</section>
+<main class="main" id="timeline">
+
+  <p class="cv-note">Dette er et utvalg fra min fullstendige CV. / This is a selection from my full CV.</p>
+
+<div class="filters">
+<span class="filter-label">Filter:</span>
+<button class="filter-btn active" onclick="filter('all', this)">All</button>
+<button class="filter-btn active soft" onclick="filter('soft', this)">● Soft Activism</button>
+<button class="filter-btn" onclick="filter('production', this)">Productions</button>
+<button class="filter-btn" onclick="filter('teaching', this)">Teaching</button>
+<button class="filter-btn" onclick="filter('facilitation', this)">Facilitation</button>
+<button class="filter-btn" onclick="filter('education', this)">Education</button>
+<button class="filter-btn" onclick="filter('leadership', this)">Leadership</button>
+</div>
+<div class="timeline">
+<div class="decade">
+<div class="decade-label">2024 – 2026</div>
+<div class="entry" data-cats="production soft">
+<div class="year-col"><div class="year">2024–2026</div></div>
+<div class="dot-col"><div class="dot soft"></div></div>
+<details class="card soft">
+<summary class="card-summary">
+<div class="card-top"><span class="title">Bleikvasslia</span><span class="venue">— Joik Concert Performance, GullBakken</span></div>
+<div class="tags"><span class="tag rust">● Soft Activism</span><span class="tag fjord">Ongoing</span><span class="tag fjord">GullBakken</span></div>
+<span class="toggle-hint-css">↓ les mer</span>
+</summary>
+<div class="note">A hybrid indoor/outdoor performance examining South Sámi language, embodied knowledge, and contested land rights amid industrial energy development in Sámi territories. The soft body in a landscape under pressure — the work asks what it means to inhabit a place that is simultaneously home, cultural archive, and disputed resource.<br/><br/>Upcoming residency: Davvi / Nordland Theatre, spring 2026. Role: Director.</div>
+<div class="support">Arts and Culture Norway (Music department)
+        </div></details>
+</div>
+</div>
+<div class="entry" data-cats="facilitation leadership">
+<div class="year-col"><div class="year">2026</div></div>
+<div class="dot-col"><div class="dot role"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">Jury Member — Balansekunst Selection Committee</span></div>
+<div class="tags"><span class="tag ash">Leadership</span></div>
+<div class="note">Selected to serve on the national jury for Balansekunst — the Norwegian arts sector's framework for safe and equal working conditions.</div>
+</div>
+</div>
+<div class="entry" data-cats="facilitation leadership">
+<div class="year-col"><div class="year">2025–2026</div></div>
+<div class="dot-col"><div class="dot"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">Programming Committee — DanceFestival Barents</span></div>
+<div class="tags"><span class="tag fjord">Facilitation</span></div>
+<div class="note">Shaping the artistic programme of the world's northernmost dance festival — selecting works, building international networks, and ensuring the festival reflects the full breadth of northern dance practice.</div>
+</div>
+</div>
+<div class="entry" data-cats="facilitation">
+<div class="year-col"><div class="year">Nov 2025</div></div>
+<div class="dot-col"><div class="dot"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">ISObar Seminar — Age and Dance</span><span class="venue">— DanseFestival Barents, Hammerfest</span></div>
+<div class="tags"><span class="tag fjord">Created &amp; Led by GullBakken</span><span class="tag fjord">Facilitation</span></div>
+<div class="note">Created and led with Alexandra Kremenets (GullBakken). A seminar on ageing, the body, and sustainable artistic practice across generations. Featured Hans Ole Rian (President of Creo), Nikolay Shchetnev (Samovarteatret), Olga Zitluhina (Latvian Academy of Culture), Ellinor Ødegård Staurbakk, and Anna C. Nordanstedt. Co-produced with Stellaris DansTeater. The seminar opened dialogue between generations, between practice and policy, between body and idea.</div>
+</div>
+</div>
+<div class="entry" data-cats="education">
+<div class="year-col"><div class="year">2024 / 2026</div></div>
+<div class="dot-col"><div class="dot edu"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">Change Management (2024) · Animal-Assisted Intervention (2026)</span></div>
+<div class="tags"><span class="tag lichen">Education</span></div>
+<div class="note">Norwegian University of Life Sciences. Developing new frameworks for working with change, care, and relationship — areas that connect directly to community-based and accessible art practice.</div>
+</div>
+</div>
+</div>
+<div class="decade">
+<div class="decade-label">2021 – 2023</div>
+<div class="entry" data-cats="production soft">
+<div class="year-col"><div class="year">2021–2023</div></div>
+<div class="dot-col"><div class="dot soft"></div></div>
+<details class="card soft">
+<summary class="card-summary">
+<div class="card-top"><span class="title">Close(d) Border Connections</span><span class="venue">— Outdoor Joik Performance</span></div>
+<div class="tags"><span class="tag rust">● Soft Activism</span></div>
+<span class="toggle-hint-css">↓ les mer</span>
+</summary>
+<div class="note">Staged simultaneously in Norway and Russia at the national border. Artists and audiences on either side — in communication across a militarised line drawn through tundra landscape. The soft body as the most radical statement: present, breathing, moving in a space defined by force and restriction.<br/><br/>Performed on ski, April 2022. Toured DanseFestival Barents, Hammerfest 2023, and Vinterlysfestivalen 2023. Role: Director, Producer, Choreographer, Performer.</div>
+<div class="support">Barents Secretariat · Kulturrådet · Kulturdep. · KORO · Rana Kommune · Fond for Lyd og Bilde
+        </div></details>
+</div>
+</div>
+<div class="entry" data-cats="production soft">
+<div class="year-col"><div class="year">2022</div></div>
+<div class="dot-col"><div class="dot soft"></div></div>
+<div class="card soft">
+<div class="card-top"><span class="title">Close(d) Border Connections — 96 Høyden</span><span class="venue">— Svanvik-Pasvik, Sør-Varanger</span></div>
+<div class="tags"><span class="tag rust">● Soft Activism</span></div>
+<div class="note">Artwork shown at 96 Høyden in the borderland of Sør-Varanger. A continuation of the same practice — the soft body in a charged landscape.</div>
+</div>
+</div>
+<div class="entry" data-cats="production soft">
+<div class="year-col"><div class="year">2023</div></div>
+<div class="dot-col"><div class="dot soft"></div></div>
+<div class="card soft">
+<div class="card-top"><span class="title">Relocarts / Reshape Barents</span><span class="venue">— R&amp;D, Serbia &amp; Norway</span></div>
+<div class="tags"><span class="tag rust">● Soft Activism</span></div>
+<div class="note">Cross-border research and artistic development in Serbia and Norway. Soft activism carried into new geographies and new collaborative frameworks. Role: Director, Artist, Facilitator, Choreographer, Producer.</div>
+</div>
+</div>
+<div class="entry" data-cats="teaching">
+<div class="year-col"><div class="year">2021</div></div>
+<div class="dot-col"><div class="dot"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">Dance Seminar — Murmansk (online)</span></div>
+<div class="tags"><span class="tag fjord">Teaching</span></div>
+<div class="note">Improvisation for semi-professional dancers in Murmansk, Russia. Even online, even across political distance — the body as the meeting place.</div>
+</div>
+</div>
+
+<div class="decade">
+<div class="decade-label">2019 – 2020</div>
+<div class="entry" data-cats="production soft">
+<div class="year-col"><div class="year">2020–2022</div></div>
+<div class="dot-col"><div class="dot soft"></div></div>
+<details class="card soft">
+<summary class="card-summary">
+<div class="card-top"><span class="title">The Gathering</span><span class="venue">— Nomadic Art Project, GullBakken</span></div>
+<div class="tags"><span class="tag rust">● Soft Activism</span><span class="tag fjord">GullBakken</span></div>
+<span class="toggle-hint-css">↓ les mer</span>
+</summary>
+<div class="note">A three-year nomadic art project. Bus expedition across the Barents region (NO, SE, FI) with 8 artists from Norway and Russia — exploring belonging, cross-border dialogue, history, and democratic creative collaboration. Video exhibition at Moscow Youth Biennale, 2020. JoikChoir / Joik Walk premiered Easter 2022 at Umbukta, the Norwegian–Swedish border.</div>
+<div class="support">Barents Kult · Kultur og Likestillingsdep. — Produced by GullBakken
+        </div></details>
+</div>
+</div>
+<div class="entry" data-cats="production soft">
+<div class="year-col"><div class="year">2019</div></div>
+<div class="dot-col"><div class="dot soft"></div></div>
+<div class="card soft">
+<div class="card-top"><span class="title">Hverdagskunst</span><span class="venue">— R&amp;D Project, Kirkenes &amp; Oslo</span></div>
+<div class="tags"><span class="tag rust">● Soft Activism</span><span class="tag fjord">Kirkenes</span></div>
+<div class="note">Research project exploring everyday art practices in northern communities. The ordinary, the accessible, the un-grand — as political territory. Supported by Norwegian Arts Council.</div>
+</div>
+</div>
+<div class="entry" data-cats="facilitation">
+<div class="year-col"><div class="year">2019</div></div>
+<div class="dot-col"><div class="dot"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">Moderator — Isobar Seminar on Cultural Investment</span><span class="venue">— DanseFestival Barents, Hammerfest</span></div>
+<div class="tags"><span class="tag fjord">Facilitation</span></div>
+<div class="note">Moderated international seminar with participants from Norway, Sweden, Canada, Iceland, Germany, Finland, and Russia. Creating space for cross-border dialogue at the edge of the world.</div>
+</div>
+</div>
+<div class="entry" data-cats="facilitation">
+<div class="year-col"><div class="year">2017–2023</div></div>
+<div class="dot-col"><div class="dot"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">Artistic Advisor — DanseFestival Barents</span></div>
+<div class="tags"><span class="tag fjord">Facilitation</span><span class="tag fjord">#metoo</span></div>
+<div class="note">Facilitation, moderation, workshop leadership, #metoo work, and international networking across the Nordic and Barents region. Building the conditions in which art can happen safely and equitably.</div>
+</div>
+</div>
+<div class="entry" data-cats="facilitation">
+<div class="year-col"><div class="year">2017–2019</div></div>
+<div class="dot-col"><div class="dot"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">#metoo Facilitator — Dansens Hus &amp; Black Box Theatre</span></div>
+<div class="tags"><span class="tag fjord">Facilitation</span><span class="tag fjord">Advocacy</span></div>
+<div class="note">Open Space format collective conversations for the performing arts sector. Lead organiser of the seminar #when dance stops (2019) at Black Box Theatre.</div>
+</div>
+</div>
+<div class="entry" data-cats="teaching">
+<div class="year-col"><div class="year">2018–2019</div></div>
+<div class="dot-col"><div class="dot"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">Mentor &amp; Facilitator — Oslo Kommune, Bydel Gamle Oslo</span></div>
+<div class="tags"><span class="tag fjord">Community</span></div>
+<div class="note">Worked with youth to develop and facilitate activities by youth for youth. Community work as artistic practice.</div>
+</div>
+</div>
+
+<div class="decade">
+<div class="decade-label">2011 – 2016</div>
+<div class="entry" data-cats="production">
+<div class="year-col"><div class="year">2014–2015</div></div>
+<div class="dot-col"><div class="dot"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">Pearl of Scandinavia</span><span class="venue">— Kompani Camping / Vega Scene</span></div>
+<div class="tags"><span class="tag fjord">Production</span></div>
+<div class="note">Choreographer / Movement Coach. Premiered Bergen International Festival 2014. Toured Copenhagen, Theatre Grob. Support: Norwegian Arts Council · Fritt Ord.</div>
+</div>
+</div>
+<div class="entry" data-cats="production">
+<div class="year-col"><div class="year">2013</div></div>
+<div class="dot-col"><div class="dot"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">Mormor og de åtte ungene</span><span class="venue">— Musical Film, Paradox</span></div>
+<div class="tags"><span class="tag fjord">Film</span></div>
+<div class="note">Choreographer and coordinator for all dance sequences. Premiered Colosseum Cinema, Oslo. Director: Lisa Gamlem. Support: Norwegian Film Fund.</div>
+</div>
+</div>
+<div class="entry" data-cats="production">
+<div class="year-col"><div class="year">2013–2014</div></div>
+<div class="dot-col"><div class="dot"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">Vi hadde alt eller intet foran oss</span><span class="venue">— BodyTech / Gull Øzger</span></div>
+<div class="tags"><span class="tag fjord">Production</span></div>
+<div class="note">Choreographer, Project Leader, Concept Developer. 6 dancers. Premiered Gjøvik 2013. Tour: Hamar, Teater Innlandet 2014. Support: Norwegian Arts Council · FFUK · Norsk Komponistfond.</div>
+</div>
+</div>
+<div class="entry" data-cats="production">
+<div class="year-col"><div class="year">2013</div></div>
+<div class="dot-col"><div class="dot"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">Get Ready / Hope You Got Your Thing Together</span></div>
+<div class="tags"><span class="tag fjord">Production</span></div>
+<div class="note">Choreographer. Solo project with dancer Matthew Smith (NZ). R&amp;D Istanbul (Catidans). Premiered SceneHuset, Oslo. Toured Vinterlysfestivalen 2015.</div>
+</div>
+</div>
+<div class="entry" data-cats="teaching">
+<div class="year-col"><div class="year">2011–2019</div></div>
+<div class="dot-col"><div class="dot"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">Guest Teacher — KHiO, Oslo National Academy of the Arts</span></div>
+<div class="tags"><span class="tag fjord">Teaching</span></div>
+<div class="note">Recurring guest teacher across Classical Ballet, Contemporary and Jazz Dance programmes. Choreographic composition, improvisation, and movement research. Teaching is how the body's knowledge passes between generations.</div>
+</div>
+</div>
+<div class="entry" data-cats="production">
+<div class="year-col"><div class="year">2011</div></div>
+<div class="dot-col"><div class="dot"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">Hook 'n Roll</span><span class="venue">— Gjøvik Municipality 150th Anniversary Commission</span></div>
+<div class="tags"><span class="tag fjord">Production</span></div>
+<div class="note">Choreographer. 5 professional dancers, 3 choirs, rock climbers, and 30+ performers. Premiered Mustad Factory, Gjøvik. A duet was shown at Danxica Festival in Mexico (2012).</div>
+</div>
+</div>
+</div>
+<div class="decade">
+<div class="decade-label">2000 – 2010</div>
+<div class="entry" data-cats="production">
+<div class="year-col"><div class="year">2005</div></div>
+<div class="dot-col"><div class="dot"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">Transitt</span><span class="venue">— Dancefilm</span></div>
+<div class="tags"><span class="tag fjord">Film</span></div>
+<div class="note">Choreographer and filmmaker with Martin Edelsteen. Shown at Oulo Dance Festival, Finland. Support: Norwegian Arts Council.</div>
+</div>
+</div>
+<div class="entry" data-cats="production">
+<div class="year-col"><div class="year">2005</div></div>
+<div class="dot-col"><div class="dot"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">Rough Sea</span><span class="venue">— Opening, Hålogaland Theatre, Tromsø</span></div>
+<div class="tags"><span class="tag fjord">Production</span></div>
+<div class="note">Choreographer. 3 dancers with orchestra and DJ — for the opening of the new venue at Hålogaland Theatre.</div>
+</div>
+</div>
+<div class="entry" data-cats="production">
+<div class="year-col"><div class="year">~1999</div></div>
+<div class="dot-col"><div class="dot"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">I Have Crossed the Arctic Circle</span><span class="venue">— Stellaris Dansteater, Hammerfest</span></div>
+<div class="tags"><span class="tag fjord">Production</span><span class="tag fjord">North</span></div>
+<div class="note">Choreographer. A performance for the northernmost professional dance company in the world. The geography as statement, long before the concept had a name.</div>
+</div>
+</div>
+<div class="entry" data-cats="production">
+<div class="year-col"><div class="year">2002</div></div>
+<div class="dot-col"><div class="dot"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">Throughout the Year with the Head on Top</span><span class="venue">— BodyTech / Gull Øzger</span></div>
+<div class="tags"><span class="tag fjord">Production</span></div>
+<div class="note"><em>Året gjennom med hodet øverst.</em> Choreographer, Project Leader, Concept Developer. Support: Norwegian Arts Council · FFUK · Northern Norwegian Arts Council.</div>
+</div>
+</div>
+</div>
+<div class="decade">
+<div class="decade-label">Education</div>
+<div class="entry" data-cats="education">
+<div class="year-col"><div class="year">1994–1997</div></div>
+<div class="dot-col"><div class="dot edu"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">BA in Choreography</span><span class="venue">— KHiO / Staten Balletthøgskole, Oslo</span></div>
+<div class="tags"><span class="tag lichen">Education</span></div>
+<div class="note">Oslo National Academy of the Arts. Teachers: Prof. Anne Grete Eriksen, Ivo Cramer, Prof. Ellen Kjellberg, Espen Giljanen, Sir Stuart Hops. Foundation in classical dance; development of a multidisciplinary practice.</div>
+</div>
+</div>
+<div class="entry" data-cats="education">
+<div class="year-col"><div class="year">1992–1993</div></div>
+<div class="dot-col"><div class="dot edu"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">Teacher Training — Høgskolen i Bodø</span></div>
+<div class="tags"><span class="tag lichen">Education</span></div>
+</div>
+</div>
+<div class="entry" data-cats="education">
+<div class="year-col"><div class="year">2023–2024</div></div>
+<div class="dot-col"><div class="dot edu"></div></div>
+<div class="card">
+<div class="card-top"><span class="title">Writing for Stage · Writing Short Fiction</span><span class="venue">— Forfatterskolen</span></div>
+<div class="tags"><span class="tag lichen">Education</span><span class="tag lichen">Writing</span></div>
+<div class="note">Short courses in writing for the stage (November 2024) and writing short fiction (November 2023) at Forfatterskolen. Developing a literary voice alongside the choreographic one — exploring how text and body can inhabit the same creative space.</div>
+</div>
+</div>
+</div>
+<div class="decade">
+<div class="decade-label">Leadership &amp; Positions</div>
+
+      <div class="entry" data-cats="leadership facilitation">
+        <div class="year-col"><div class="year">Nov 2025</div></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="card" onclick="toggle(this)">
+          <span class="toggle-hint">↓ les mer</span>
+          <div class="card-top"><span class="title">ISObar Seminar — Age and Dance</span><span class="venue">— DanseFestival Barents, Hammerfest</span></div>
+          <div class="tags"><span class="tag fjord">Skapt & ledet av GullBakken</span><span class="tag ash">Leadership</span></div>
+          <div class="note">Skapte og ledet seminaret sammen med Alexandra Kremenets (GullBakken). Tema: alder, kropp og bærekraftig kunstnerisk praksis på tvers av generasjoner. Med Hans Ole Rian (president i Creo), Nikolay Shchetnev (Samovarteatret), Olga Zitluhina (Latvisk Akademi for Kultur), Ellinor Ødegård Staurbakk og Anna C. Nordanstedt. Co-produsert med Stellaris DansTeater.</div>
+        </div>
+      </div>
+<div class="entry" data-cats="leadership">
+<div class="year-col"><div class="year">2024–</div></div>
+<div class="dot-col"><div class="dot role"></div></div>
+<div class="card"><div class="card-top"><span class="title">Board Member — CREO Oslo</span></div><div class="tags"><span class="tag ash">Leadership</span></div></div>
+</div>
+<div class="entry" data-cats="leadership">
+<div class="year-col"><div class="year">2005–2007</div></div>
+<div class="dot-col"><div class="dot role"></div></div>
+<div class="card"><div class="card-top"><span class="title">Project Manager &amp; Choreographer — DanseArena Nord, Hammerfest</span></div><div class="tags"><span class="tag ash">Leadership</span></div></div>
+</div>
+<div class="entry" data-cats="leadership">
+<div class="year-col"><div class="year">2006</div></div>
+<div class="dot-col"><div class="dot role"></div></div>
+<div class="card"><div class="card-top"><span class="title">Curator, Dance for Camera — DanseFestival Barents</span></div><div class="tags"><span class="tag ash">Leadership</span></div></div>
+</div>
+<div class="entry" data-cats="leadership">
+<div class="year-col"><div class="year">2004–2006</div></div>
+<div class="dot-col"><div class="dot role"></div></div>
+<div class="card"><div class="card-top"><span class="title">Board Member — North Norwegian Arts Council</span></div><div class="tags"><span class="tag ash">Leadership</span></div></div>
+</div>
+<div class="entry" data-cats="leadership">
+<div class="year-col"><div class="year">2003–2007</div></div>
+<div class="dot-col"><div class="dot role"></div></div>
+<div class="card"><div class="card-top"><span class="title">Chairwoman — FNND (Free Norwegian Dance Network)</span></div><div class="tags"><span class="tag ash">Leadership</span></div></div>
+</div>
+<div class="entry" data-cats="leadership">
+<div class="year-col"><div class="year">2001–2006</div></div>
+<div class="dot-col"><div class="dot role"></div></div>
+<div class="card"><div class="card-top"><span class="title">Board Member — Subjazz Foundation</span></div><div class="tags"><span class="tag ash">Leadership</span></div></div>
+</div>
+</div>
+
+<!-- PRACTICE SECTION -->
+<div class="narrative-section" id="practice">
+<div class="section-label">Artistic Practice</div>
+<div class="narrative-text">
+<p>Gull Øzger is a Norwegian choreographer, director, and dance artist born in Mo i Rana, Nordland. Her practice is rooted in the body as a site of political, cultural, and sensory knowledge — and in the specific landscapes, languages, and border zones of Northern Norway and the Barents region. She is not a visitor to this geography: she comes from it.</p>
+<p>A defining strand of her practice since 2018 is what she calls <strong>soft activism</strong> — a choreographic and political approach that grew out of her work on <em>Close(d) Border Connections</em>. Where conventional activism is often confrontational, loud, and conflict-driven, soft activism places the body's softness, vulnerability, and physical form at the centre of political expression. The soft body in a border zone becomes the most radical statement possible.</p>
+<p>Through <strong>GullBakken</strong>, she develops work deeply rooted in non-normative perspectives — questioning whose bodies, whose languages, and whose ways of organising are considered the norm in art and in public space. The company works with non-hierarchical collaborative structures and a deep engagement with place, operating alongside — not on behalf of — the communities and knowledge systems the work engages with.</p>
+<p>She is committed to creating environments where difference — in age, background, ability, nationality, and culture — is the creative material, not the exception.</p>
+</div>
+</div>
+</main>
+<footer class="site-footer" id="contact">
+<div class="footer-rule-top"></div>
+<div class="footer-inner">
+<div>
+<strong>Gull Øzger</strong><br/>
+<a href="/cdn-cgi/l/email-protection#8cebf9e0e0ccebf9e0e0eeede7e7e9e2a2e2e3"><span class="__cf_email__" data-cfemail="99feecf5f5d9feecf5f5fbf8f2f2fcf7b7f7f6">[email protected]</span></a>
+</div>
+<div>
+      <br/>
+      Oslo, Norway
+    </div>
+<div>
+<a href="/cdn-cgi/l/email-protection#f592809999b59280999997949e9e909bdb9b9a">GullBakken</a><br/>
+      Mo i Rana, Nordland
+    </div>
+</div>
+<div class="footer-note">Note: I am a person with impaired hearing and use a hearing aid. Full documentation CV available on request.</div>
+</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+function setFont(size) {
+  document.body.style.fontSize = size + 'px';
+  document.querySelectorAll('.font-btn').forEach(function(b) {
+    b.style.background = 'transparent';
+    b.style.color = '';
+  });
+}
+
+function toggleAccess() {
+  var el = document.getElementById('access-content');
+  var btn = document.getElementById('access-btn');
+  var btnText = document.getElementById('access-btn-text');
+  if (el.style.display === 'none') {
+    el.style.display = 'block';
+    btn.setAttribute('aria-expanded', 'true');
+    btnText.innerHTML = '&#x2715;&nbsp;&nbsp;Lukk / Close';
+  } else {
+    el.style.display = 'none';
+    btn.setAttribute('aria-expanded', 'false');
+    btnText.innerHTML = '&#x2630;&nbsp;&nbsp;Les en enkel tekst om meg &nbsp;/&nbsp; Read a simple text about me';
+  }
+}
+
+function showLang(lang, clickedBtn) {
+  document.getElementById('lang-no').style.display = lang === 'no' ? 'block' : 'none';
+  document.getElementById('lang-en').style.display = lang === 'en' ? 'block' : 'none';
+  document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+  clickedBtn.classList.add('active');
+}
+
+function toggle(card) {
+  var note = card.querySelector('.note');
+  if (!note) return;
+  card.classList.toggle('open');
+  var hint = card.querySelector('.toggle-hint');
+  if (hint) hint.textContent = card.classList.contains('open') ? '↑ lukk' : '↓ les mer';
+}
+
+document.addEventListener('click', function(e) {
+  var card = e.target.closest('.card');
+  if (!card) return;
+  var note = card.querySelector('.note');
+  if (!note) return;
+  card.classList.toggle('open');
+  var hint = card.querySelector('.toggle-hint');
+  if (hint) hint.textContent = card.classList.contains('open') ? '↑ lukk' : '↓ les mer';
+});
+
+document.querySelectorAll('.card').forEach(function(card) {
+  if (card.querySelector('.note')) card.classList.add('has-note');
+});
+
+function filter(cat, btn) {
+  var allBtns = document.querySelectorAll('.filter-btn');
+  var entries = document.querySelectorAll('.entry');
+  allBtns.forEach(function(b) {
+    b.classList.remove('active');
+    b.textContent = b.textContent.replace('✓ ', '');
+  });
+  btn.classList.add('active');
+  btn.textContent = '✓ ' + btn.textContent;
+  if (cat === 'all') {
+    entries.forEach(function(e) { e.classList.remove('hidden'); });
+    return;
+  }
+  entries.forEach(function(e) {
+    var cats = e.dataset.cats || '';
+    e.classList.toggle('hidden', cats.indexOf(cat) === -1);
+  });
+}
+</script></body></html>
